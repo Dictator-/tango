@@ -14,7 +14,27 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#print("\npath for the base directory is: "+BASE_DIR+"\n")
 
+# print("printing" + __file__) #print the full path
+# print(os.path.dirname(__file__)) #print the parent directory of the file path
+# print(os.path.dirname(os.path.dirname(__file__))) #print the parent directory of the parent directory of the file path
+
+# testing the path
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+#print("\npath for templates is: " + TEMPLATE_DIR)
+
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+#print("\npath for static is: " + STATIC_DIR+"\n")
+
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+print ("\npath for media is: "+MEDIA_DIR+"\n")
+
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
+
+
+STATICFILES_DIRS = [STATIC_DIR, ]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -37,7 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rango',
+    'rango'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -56,7 +76,7 @@ ROOT_URLCONF = 'tango_with_django_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR, ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -64,6 +84,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
         },
     },
